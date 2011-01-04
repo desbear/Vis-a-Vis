@@ -1,0 +1,528 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+
+<TITLE>客訪資料系統管理</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=content-type>
+<LINK rel=icon type=image/x-icon href="images/vitals_logo.gif">
+<LINK rel="shortcut icon" type=image/x-icon href="images/vitals_logo.gif">
+<LINK rel=bookmark type=image/x-icon href="images/vitals_logo.gif">
+<LINK rel=stylesheet type=text/css href="css/clickmenu.css">
+<LINK rel=stylesheet type=text/css href="css/tree-folder.css">
+<LINK rel=stylesheet type=text/css href="css/styles.css">
+<LINK rel=stylesheet type=text/css href="css/tablesorter/style.css">
+<LINK rel=stylesheet type=text/css href="css/window.css">
+<LINK rel=stylesheet type=text/css href="css/jquery.autocomplete.css">
+<LINK rel=stylesheet type=text/css href="css/jquery-ui.css">
+<LINK rel=stylesheet type=text/css href="css/ui.tabs.css">
+<LINK rel=stylesheet type=text/css href="css/ui.datepicker.css">
+<LINK title=BLUE rel=stylesheet type=text/css href="css/styles_blue.css">
+<LINK rel=stylesheet type=text/css href="css/uniform.default.css">
+
+<LINK rel=stylesheet href="css/editor.css">
+<link rel="stylesheet" type="text/css" href="css/Calendar.css">
+<script language="javascript" src="js/functions.js"></script>
+<script language="javascript" src="js/jquery.js"></script>
+<script language="javascript" src="js/jquery.getParams.js"></script>
+<script language="javascript" src="js/CalendarPopup.js"></script>
+<script language="javascript" src="js/jquery-1.4.1.min.js"></script>
+<script language="javascript" src="js/jquery.uniform.min.js"></script>
+<script language="javascript" src="js/new.js"></script>
+
+<!--[if lt IE 7]>
+	 <script type="text/javascript" src="js/fix-png-ie6.js"></script>
+	 <script type="text/javascript" src="js/ie6.js"></script>
+	<![endif]-->
+
+
+</HEAD>
+<BODY onload="adminPageInit();">
+
+<DIV id=header>
+<DIV id=header_logo title=3.0.9.510 onclick="location.href='home.html'" style="cursor: pointer;"></DIV>
+<DIV class=topheader>
+<ul id="nav">
+  <li><a href="home.html">回首頁</a></li>
+  <li><a href="admin.html">管理</a></li>
+ </ul>
+	<DIV id=user>
+		<IMG align=absMiddle src="images/kbuser/default.jpg" width=16 height=16>
+		<span id=currentUser>Jm Chen (陳俊民)</span>
+	</DIV>
+	<!--單位自定義區塊-->
+	<div id="custum">
+	<h2>叡揚資訊股份有限公司</h2>
+	<img src="images/logoc.png" class="logoc">
+	<div id="logomask"></div>
+	</div><!--單位自定義區塊ENd-->
+
+</DIV>
+
+</DIV>
+
+<DIV class=rowspace></DIV>
+<DIV class=wrapper>
+	<FORM id=aspnetForm method=post name=aspnetForm enctype="multipart/form-data">
+	<DIV>
+		<TABLE border=0 width="100%">
+		<TBODY>
+		<TR>
+		<TD style="WIDTH: 200px; padding-right:5px;" vAlign=top>
+
+			<DIV class=divitem>
+			<DIV class="divcaption clearfix"><div class="left">管 理<div class='captiondec'></div></div> </DIV>
+			<DIV class=divcontent>
+			<UL class=vmenu>
+			<UL class=vmenu-item>
+			<LI style="LIST-STYLE-TYPE: none"><A href="#" onclick="$('#contents0').show();$('#contents2,#contents4').hide();">欄位定義 </A></LI></UL>
+			<LI style="LIST-STYLE-TYPE: none"><A href="#" onclick="$('#contents2').show();$('#contents0,#contents4').hide();">使用者維護 </A></LI></UL>
+			<!--<LI style="LIST-STYLE-TYPE: none">
+			<DIV class=vmenu-sub><IMG style="VERTICAL-ALIGN: middle" src="images/gif_userset.gif"> <A>管理權限 </A></DIV>
+			<UL class=vmenu-item>
+			<LI style="LIST-STYLE-TYPE: none"><IMG style="VERTICAL-ALIGN: middle" src="images/gif_point.gif"> <A href="#" onclick="$('#contents3').show();$('#contents1,#contents2').hide();">基本資料維護 </A></UL>
+			<LI style="LIST-STYLE-TYPE: none">-->
+			</UL></DIV>
+			</DIV>
+			<!--
+			<div class="divitem">
+				<DIV class="divcaption clearfix"><div class="left">報 表</div></DIV>
+				<DIV class=divcontent>
+				
+				<UL class=vmenu>
+				<UL class=vmenu-item>
+				<LI style="LIST-STYLE-TYPE: none"><A href="#" onclick="rptMode(this.innerText,'1');">閱讀紀錄</A> 
+				<LI style="LIST-STYLE-TYPE: none"><A href="#" onclick="rptMode(this.innerText,'2');">下載紀錄</A>  
+				<LI style="LIST-STYLE-TYPE: none"><A href="#" onclick="rptMode(this.innerText,'3');">登入摘要</A> 
+				<LI style="LIST-STYLE-TYPE: none"><A href="#" onclick="rptMode(this.innerText,'4');">登入紀錄</A> </LI></UL></LI></UL>
+				<UL></UL></DIV>
+			</div>-->
+		</TD>
+		<TD vAlign=top>
+			<DIV class=divitem id="contents0">
+				<DIV class="divcaption clearfix">
+					<IMG style="VERTICAL-ALIGN: middle" src="images/gif_doc.gif"> 目前位置<img src="images/breadcrumb_arrow.png" style="margin-top:4px;">管理 / 欄位定義
+				</DIV>
+				<DIV class=divcontent>
+					<DIV class=panel>
+					<DIV class=master>
+					</DIV>
+					<DIV class=master>
+					<DIV><BUTTON id=newitempower class=btn01_mouseout jQuery1280993101485="47"><IMG border=0 align=absMiddle src="images/add.png">&nbsp;新增</BUTTON> </DIV>
+					<DIV id=newitem class=newitem><A><IMG border=0 align=absMiddle src="images/add.png">&nbsp;新欄位名稱 </A><INPUT id=newfield><BUTTON id=submitnew class=btn01_mouseout jQuery1280993101485="51">確定</BUTTON><BUTTON id=cancelnew class=btn01_mouseout jQuery1280993101485="49">取消</BUTTON> </DIV>
+					<DIV id=attributes class=ui-sortable jQuery1280993101485="67">
+					<DIV id=name class=listitem><IMG style="CURSOR: move" border=0 align=absMiddle src="images/movecursor.png">&nbsp;顯示名稱<INPUT id=name_DisplayName class=shortextfield value=客戶名稱>&nbsp;欄位名稱<INPUT id=name_Name class=shortextfield value=name>&nbsp;屬性<SELECT id=name_AttributeType onchange='checkValidEmptyForTitle("name_AttributeType");'><OPTION selected value=0>標題</OPTION><OPTION value=1>摘要</OPTION><OPTION value=2>其他</OPTION></SELECT>&nbsp;&nbsp;&nbsp;<A href='javascript:toggle("name");'><IMG id=name_tog border=0 align=absMiddle src="images/expand_icon.gif"></A>&nbsp;<A href='javascript:del("name");'><IMG border=0 align=absMiddle src="images/cross.png"></A>
+					<DIV style="PADDING-BOTTOM: 8px; MARGIN-TOP: 8px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; DISPLAY: none; BACKGROUND: #fff; PADDING-TOP: 8px" id=name_sub>
+					<P class=innerbox><B>描述</B></P>
+					<P class=innerbox><TEXTAREA id=name_Description class=textfield>請輸入"西元紀年月日_拜訪客戶中文名稱_Call Report",做為本知識文件之標題</TEXTAREA></P>
+					<P class=innerbox><B>欄位介面</B></P>
+					<P class=innerbox><SELECT id=name_UIFieldType onchange="toggleUIFieldItemPanel('name', this.options[this.selectedIndex].value);"><OPTION value=TEXTAREA>多行文字方塊</OPTION><OPTION selected value=TEXTBOX>單行文字方塊</OPTION><OPTION value=RADIO>單選按鈕</OPTION><OPTION value=DROPDOWN>下拉式選單</OPTION><OPTION value=CALENDAR>日期格式文字方塊</OPTION><OPTION value=RICHTEXT>豐富文字編輯器</OPTION><OPTION value=CHECKLIST>多勾選</OPTION><OPTION value=DATETIME>日期與時間文字方塊</OPTION></SELECT>&nbsp;<INPUT id=name_ValidateEmpty CHECKED type=checkbox>必填欄位&nbsp;<INPUT id=name_AllowEdit CHECKED type=checkbox>允許編輯
+					<DIV style="DISPLAY: block" id=name_RegExpPanel><INPUT id=name_LimitTo type=checkbox>限制格式為<SELECT id=name_RegExpTemplateKey readonly="true"><OPTION selected value=001^[+-]?(?:\d+\.?\d*|\d*\.?\d+)*$>1234...</OPTION><OPTION value=002^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$>Email</OPTION><OPTION value=003^(http[s]?://|ftp://)?(www\.)?[a-zA-Z0-9-\.]+\.(com|org|net|edu|ca|co.uk|com.au|gov|tw|cc|info|jp|biz|tv|me|us|nl|it|es|at|be|eu|bz|ws|nu|co.jp)$>URL</OPTION></SELECT></DIV>
+					<P></P>
+					<DIV style="DISPLAY: none" id=name_UIFieldItemPanel>
+					<TABLE cellSpacing=2 cellPadding=0>
+					<TBODY>
+					<TR>
+					<TD colSpan=2><INPUT id=name_add_textbox class="addItemDataTextbox midtextfield">&nbsp;<BUTTON id=name_add_button class=btn01_mouseout title=將輸入的值加到清單中 onclick=";">加入</BUTTON></TD></TR>
+					<TR>
+					<TD rowSpan=2><SELECT id=name_UIFieldItem class=textfield size=5></SELECT></TD>
+					<TD>&nbsp;<BUTTON style="WIDTH: 20px" id=name_up_button class=btn01_mouseout onclick=";">↑</BUTTON>&nbsp;<BUTTON style="WIDTH: 20px" id=name_down_button class=btn01_mouseout onclick=";">↓</BUTTON>&nbsp;<BUTTON id=name_remove_button class=btn01_mouseout title=移除清單中所選取的項目 onclick=";">移除</BUTTON></TD></TR>
+					<TR>
+					<TD>&nbsp;<BUTTON id=name_set_default_button class=btn01_mouseout title=將清單中的選取項目設成預設值 onclick="setSelectedItemAsDefaultValue('name', 'name_UIFieldItem', 'name_DefaultValue')">預設值</BUTTON></TD></TR></TBODY></TABLE></DIV>
+					<P class=innerbox><B>預設值</B></P>
+					<P class=innerbox><INPUT id=name_DefaultValue class=textfield></P></DIV></DIV>
+					<DIV id=products class=listitem><IMG style="CURSOR: move" border=0 align=absMiddle src="images/movecursor.png">&nbsp;顯示名稱<INPUT id=products_DisplayName class=shortextfield value=產品別>&nbsp;欄位名稱<INPUT id=products_Name class=shortextfield value=products>&nbsp;屬性<SELECT id=products_AttributeType onchange='checkValidEmptyForTitle("products_AttributeType");'><OPTION value=0>標題</OPTION><OPTION value=1>摘要</OPTION><OPTION selected value=2>其他</OPTION></SELECT>&nbsp;&nbsp;&nbsp;<A href='javascript:toggle("products");'><IMG id=products_tog border=0 align=absMiddle src="images/expand_icon.gif"></A>&nbsp;<A href='javascript:del("products");'><IMG border=0 align=absMiddle src="images/cross.png"></A>
+					<DIV style="PADDING-BOTTOM: 8px; MARGIN-TOP: 8px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; DISPLAY: none; BACKGROUND: #fff; PADDING-TOP: 8px" id=products_sub>
+					<P class=innerbox><B>描述</B></P>
+					<P class=innerbox><TEXTAREA id=products_Description class=textfield>請勾選本次訪談主要相關之公司產品,若無法選擇,本欄位請空白, 改以產品名稱做為本文件之標籤</TEXTAREA></P>
+					<P class=innerbox><B>欄位介面</B></P>
+					<P class=innerbox><SELECT id=products_UIFieldType onchange="toggleUIFieldItemPanel('products', this.options[this.selectedIndex].value);"><OPTION value=TEXTAREA>多行文字方塊</OPTION><OPTION value=TEXTBOX>單行文字方塊</OPTION><OPTION value=RADIO>單選按鈕</OPTION><OPTION value=DROPDOWN>下拉式選單</OPTION><OPTION value=CALENDAR>日期格式文字方塊</OPTION><OPTION value=RICHTEXT>豐富文字編輯器</OPTION><OPTION selected value=CHECKLIST>多勾選</OPTION><OPTION value=DATETIME>日期與時間文字方塊</OPTION></SELECT>&nbsp;<INPUT id=products_ValidateEmpty type=checkbox>必填欄位&nbsp;<INPUT id=products_AllowEdit CHECKED type=checkbox>允許編輯
+					<DIV style="DISPLAY: none" id=products_RegExpPanel><INPUT id=products_LimitTo type=checkbox>限制格式為<SELECT id=products_RegExpTemplateKey readonly="true"><OPTION selected value=001^[+-]?(?:\d+\.?\d*|\d*\.?\d+)*$>1234...</OPTION><OPTION value=002^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$>Email</OPTION><OPTION value=003^(http[s]?://|ftp://)?(www\.)?[a-zA-Z0-9-\.]+\.(com|org|net|edu|ca|co.uk|com.au|gov|tw|cc|info|jp|biz|tv|me|us|nl|it|es|at|be|eu|bz|ws|nu|co.jp)$>URL</OPTION></SELECT></DIV>
+					<P></P>
+					<DIV id=products_UIFieldItemPanel>
+					<TABLE cellSpacing=2 cellPadding=0>
+					<TBODY>
+					<TR>
+					<TD colSpan=2><INPUT id=products_add_textbox class="addItemDataTextbox midtextfield">&nbsp;<BUTTON id=products_add_button class=btn01_mouseout title=將輸入的值加到清單中 onclick=";">加入</BUTTON></TD></TR>
+					<TR>
+					<TD rowSpan=2><SELECT id=products_UIFieldItem class=textfield size=43><OPTION value=Heart-RUN人際網絡管理系統>Heart-RUN人際網絡管理系統</OPTION><OPTION value="Heart-SWS 知識型單一服務管理系統">Heart-SWS 知識型單一服務管理系統</OPTION><OPTION value=Heart健康管理系統(教學版)>Heart健康管理系統(教學版)</OPTION><OPTION value="Heart-CRM 客戶關係管理系統">Heart-CRM 客戶關係管理系統</OPTION><OPTION value="Heart-CRM 客戶關係管理系統(教育版)">Heart-CRM 客戶關係管理系統(教育版)</OPTION><OPTION value="Heart-FAQ 智慧型常見問題集">Heart-FAQ 智慧型常見問題集</OPTION><OPTION value="Heart-MMS 行銷管理系統">Heart-MMS 行銷管理系統</OPTION><OPTION value=Heart-ITSM資訊服務管理系統>Heart-ITSM資訊服務管理系統</OPTION><OPTION value="Heart-Survey 線上問卷管理系統">Heart-Survey 線上問卷管理系統</OPTION><OPTION value=Heart-SFA銷售自動化管理系統>Heart-SFA銷售自動化管理系統</OPTION><OPTION value="teamKube 會辦活">teamKube 會辦活</OPTION><OPTION value="R.A.D.A.R. 人力資源管理系統">R.A.D.A.R. 人力資源管理系統</OPTION><OPTION value=SPEED>SPEED</OPTION><OPTION value="Vitals/KM 知識管理系統">Vitals/KM 知識管理系統</OPTION><OPTION value=新聞知識管理系統>新聞知識管理系統</OPTION><OPTION value="信評/Credit rating(法/個/信)">信評/Credit rating(法/個/信)</OPTION><OPTION value=施政計畫>施政計畫</OPTION><OPTION value=貸後管理>貸後管理</OPTION><OPTION value=催收/逾放(法/個/信)>催收/逾放(法/個/信)</OPTION><OPTION value=會議管考>會議管考</OPTION><OPTION value=資訊委外服務－資訊業務委外>資訊委外服務－資訊業務委外</OPTION><OPTION value=資訊委外服務－線上申辦>資訊委外服務－線上申辦</OPTION><OPTION value=徵授信/e-Loan(法/個/信)>徵授信/e-Loan(法/個/信)</OPTION><OPTION value=稽核系統>稽核系統</OPTION><OPTION value=擔保品管理>擔保品管理</OPTION><OPTION value=聯徵/票交>聯徵/票交</OPTION><OPTION value="BMC-平台跟事件管理 (ITIL)">BMC-平台跟事件管理 (ITIL)</OPTION><OPTION value=BMC-Control-M-批次作業管理>BMC-Control-M-批次作業管理</OPTION><OPTION value="CWA-系統平台穩定性與效能 (ALC)">CWA-系統平台穩定性與效能 (ALC)</OPTION><OPTION value="CWA-Vantage-Performance management (APM)">CWA-Vantage-Performance management (APM)</OPTION><OPTION value="EMB-DBArtisan-DB Management">EMB-DBArtisan-DB Management</OPTION><OPTION value=Fortify>Fortify</OPTION><OPTION value="Imperva-DB Audit">Imperva-DB Audit</OPTION><OPTION value="iWay(Information Builders)">iWay(Information Builders)</OPTION><OPTION value=Mail2000(Openfind)>Mail2000(Openfind)</OPTION><OPTION value=MailBase(Openfind)>MailBase(Openfind)</OPTION><OPTION value=MailGates(Openfind)>MailGates(Openfind)</OPTION><OPTION value=STC-C:D-資料傳輸交換管理>STC-C:D-資料傳輸交換管理</OPTION><OPTION value="Synsort-DMExpress-Data process 加速">Synsort-DMExpress-Data process 加速</OPTION><OPTION value=VMWare-虛擬伺服器>VMWare-虛擬伺服器</OPTION><OPTION value="WebFOCUS(Information Builders)">WebFOCUS(Information Builders)</OPTION><OPTION value=SafeNet>SafeNet</OPTION></SELECT></TD>
+					<TD>&nbsp;<BUTTON style="WIDTH: 20px" id=products_up_button class=btn01_mouseout onclick=";">↑</BUTTON>&nbsp;<BUTTON style="WIDTH: 20px" id=products_down_button class=btn01_mouseout onclick=";">↓</BUTTON>&nbsp;<BUTTON id=products_remove_button class=btn01_mouseout title=移除清單中所選取的項目 onclick=";">移除</BUTTON></TD></TR>
+					<TR>
+					<TD>&nbsp;<BUTTON id=products_set_default_button class=btn01_mouseout title=將清單中的選取項目設成預設值 onclick=";">預設值</BUTTON></TD></TR></TBODY></TABLE></DIV>
+					<P class=innerbox><B>預設值</B></P>
+					<P class=innerbox><INPUT id=products_DefaultValue class=textfield></P></DIV></DIV>
+					<DIV id=date class=listitem><IMG style="CURSOR: move" border=0 align=absMiddle src="images/movecursor.png">&nbsp;顯示名稱<INPUT id=date_DisplayName class=shortextfield value=拜訪日期>&nbsp;欄位名稱<INPUT id=date_Name class=shortextfield value=date>&nbsp;屬性<SELECT id=date_AttributeType onchange='checkValidEmptyForTitle("date_AttributeType");'><OPTION value=0>標題</OPTION><OPTION value=1>摘要</OPTION><OPTION selected value=2>其他</OPTION></SELECT>&nbsp;&nbsp;&nbsp;<A href='javascript:toggle("date");'><IMG id=date_tog border=0 align=absMiddle src="images/expand_icon.gif"></A>&nbsp;<A href='javascript:del("date");'><IMG border=0 align=absMiddle src="images/cross.png"></A>
+					<DIV style="PADDING-BOTTOM: 8px; MARGIN-TOP: 8px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; DISPLAY: none; BACKGROUND: #fff; PADDING-TOP: 8px" id=date_sub>
+					<P class=innerbox><B>描述</B></P>
+					<P class=innerbox><TEXTAREA id=date_Description class=textfield>請輸入本次拜訪日期</TEXTAREA></P>
+					<P class=innerbox><B>欄位介面</B></P>
+					<P class=innerbox><SELECT id=date_UIFieldType onchange="toggleUIFieldItemPanel('date', this.options[this.selectedIndex].value);"><OPTION value=TEXTAREA>多行文字方塊</OPTION><OPTION value=TEXTBOX>單行文字方塊</OPTION><OPTION value=RADIO>單選按鈕</OPTION><OPTION value=DROPDOWN>下拉式選單</OPTION><OPTION selected value=CALENDAR>日期格式文字方塊</OPTION><OPTION value=RICHTEXT>豐富文字編輯器</OPTION><OPTION value=CHECKLIST>多勾選</OPTION><OPTION value=DATETIME>日期與時間文字方塊</OPTION></SELECT>&nbsp;<INPUT id=date_ValidateEmpty CHECKED type=checkbox>必填欄位&nbsp;<INPUT id=date_AllowEdit CHECKED type=checkbox>允許編輯
+					<DIV style="DISPLAY: none" id=date_RegExpPanel><INPUT id=date_LimitTo type=checkbox>限制格式為<SELECT id=date_RegExpTemplateKey readonly="true"><OPTION selected value=001^[+-]?(?:\d+\.?\d*|\d*\.?\d+)*$>1234...</OPTION><OPTION value=002^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$>Email</OPTION><OPTION value=003^(http[s]?://|ftp://)?(www\.)?[a-zA-Z0-9-\.]+\.(com|org|net|edu|ca|co.uk|com.au|gov|tw|cc|info|jp|biz|tv|me|us|nl|it|es|at|be|eu|bz|ws|nu|co.jp)$>URL</OPTION></SELECT></DIV>
+					<P></P>
+					<DIV style="DISPLAY: none" id=date_UIFieldItemPanel>
+					<TABLE cellSpacing=2 cellPadding=0>
+					<TBODY>
+					<TR>
+					<TD colSpan=2><INPUT id=date_add_textbox class="addItemDataTextbox midtextfield">&nbsp;<BUTTON id=date_add_button class=btn01_mouseout title=將輸入的值加到清單中 onclick="addToList('date_add_textbox', 'date_UIFieldItem');">加入</BUTTON></TD></TR>
+					<TR>
+					<TD rowSpan=2><SELECT id=date_UIFieldItem class=textfield size=5></SELECT></TD>
+					<TD>&nbsp;<BUTTON style="WIDTH: 20px" id=date_up_button class=btn01_mouseout onclick=";">↑</BUTTON>&nbsp;<BUTTON style="WIDTH: 20px" id=date_down_button class=btn01_mouseout onclick=";">↓</BUTTON>&nbsp;<BUTTON id=date_remove_button class=btn01_mouseout title=移除清單中所選取的項目 onclick=";">移除</BUTTON></TD></TR>
+					<TR>
+					<TD>&nbsp;<BUTTON id=date_set_default_button class=btn01_mouseout title=將清單中的選取項目設成預設值 onclick=";">預設值</BUTTON></TD></TR></TBODY></TABLE></DIV>
+					<P class=innerbox><B>預設值</B></P>
+					<P class=innerbox><INPUT id=date_DefaultValue class=textfield></P></DIV></DIV>
+					<DIV id=type class=listitem><IMG style="CURSOR: move" border=0 align=absMiddle src="images/movecursor.png">&nbsp;顯示名稱<INPUT id=type_DisplayName class=shortextfield value=類型>&nbsp;欄位名稱<INPUT id=type_Name class=shortextfield value=type>&nbsp;屬性<SELECT id=type_AttributeType onchange='checkValidEmptyForTitle("type_AttributeType");'><OPTION value=0>標題</OPTION><OPTION value=1>摘要</OPTION><OPTION selected value=2>其他</OPTION></SELECT>&nbsp;&nbsp;&nbsp;<A href='javascript:toggle("type");'><IMG id=type_tog border=0 align=absMiddle src="images/expand_icon.gif"></A>&nbsp;<A href='javascript:del("type");'><IMG border=0 align=absMiddle src="images/cross.png"></A>
+					<DIV style="PADDING-BOTTOM: 8px; MARGIN-TOP: 8px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; DISPLAY: none; BACKGROUND: #fff; PADDING-TOP: 8px" id=type_sub>
+					<P class=innerbox><B>描述</B></P>
+					<P class=innerbox><TEXTAREA id=type_Description class=textfield>Call report type: (1) Sales Call (2) Presale call (3) Service Call (4) Consulting Call (5) Executive Care (6) Marketing</TEXTAREA></P>
+					<P class=innerbox><B>欄位介面</B></P>
+					<P class=innerbox><SELECT id=type_UIFieldType onchange="toggleUIFieldItemPanel('type', this.options[this.selectedIndex].value);"><OPTION value=TEXTAREA>多行文字方塊</OPTION><OPTION value=TEXTBOX>單行文字方塊</OPTION><OPTION value=RADIO>單選按鈕</OPTION><OPTION selected value=DROPDOWN>下拉式選單</OPTION><OPTION value=CALENDAR>日期格式文字方塊</OPTION><OPTION value=RICHTEXT>豐富文字編輯器</OPTION><OPTION value=CHECKLIST>多勾選</OPTION><OPTION value=DATETIME>日期與時間文字方塊</OPTION></SELECT>&nbsp;<INPUT id=type_ValidateEmpty type=checkbox>必填欄位&nbsp;<INPUT id=type_AllowEdit CHECKED type=checkbox>允許編輯
+					<DIV style="DISPLAY: none" id=type_RegExpPanel><INPUT id=type_LimitTo type=checkbox>限制格式為<SELECT id=type_RegExpTemplateKey readonly="true"><OPTION selected value=001^[+-]?(?:\d+\.?\d*|\d*\.?\d+)*$>1234...</OPTION><OPTION value=002^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$>Email</OPTION><OPTION value=003^(http[s]?://|ftp://)?(www\.)?[a-zA-Z0-9-\.]+\.(com|org|net|edu|ca|co.uk|com.au|gov|tw|cc|info|jp|biz|tv|me|us|nl|it|es|at|be|eu|bz|ws|nu|co.jp)$>URL</OPTION></SELECT></DIV>
+					<P></P>
+					<DIV id=type_UIFieldItemPanel>
+					<TABLE cellSpacing=2 cellPadding=0>
+					<TBODY>
+					<TR>
+					<TD colSpan=2><INPUT id=type_add_textbox class="addItemDataTextbox midtextfield">&nbsp;<BUTTON id=type_add_button class=btn01_mouseout title=將輸入的值加到清單中 onclick=";">加入</BUTTON></TD></TR>
+					<TR>
+					<TD rowSpan=2><SELECT id=type_UIFieldItem class=textfield size=7><OPTION value="Sales Call">Sales Call</OPTION><OPTION value="Presale Call">Presale Call</OPTION><OPTION value="Service Call">Service Call</OPTION><OPTION value="Consulting Call">Consulting Call</OPTION><OPTION value="Executive Care">Executive Care</OPTION><OPTION value=Marketing>Marketing</OPTION></SELECT></TD>
+					<TD>&nbsp;<BUTTON style="WIDTH: 20px" id=type_up_button class=btn01_mouseout onclick=";">↑</BUTTON>&nbsp;<BUTTON style="WIDTH: 20px" id=type_down_button class=btn01_mouseout onclick=";">↓</BUTTON>&nbsp;<BUTTON id=type_remove_button class=btn01_mouseout title=移除清單中所選取的項目 onclick=";">移除</BUTTON></TD></TR>
+					<TR>
+					<TD>&nbsp;<BUTTON id=type_set_default_button class=btn01_mouseout title=將清單中的選取項目設成預設值 onclick=";">預設值</BUTTON></TD></TR></TBODY></TABLE></DIV>
+					<P class=innerbox><B>預設值</B></P>
+					<P class=innerbox><INPUT id=type_DefaultValue class=textfield value="Sales Call"></P></DIV></DIV>
+					<DIV id=code class=listitem><IMG style="CURSOR: move" border=0 align=absMiddle src="images/movecursor.png">&nbsp;顯示名稱<INPUT id=code_DisplayName class=shortextfield value=客戶代號>&nbsp;欄位名稱<INPUT id=code_Name class=shortextfield value=code>&nbsp;屬性<SELECT id=code_AttributeType onchange='checkValidEmptyForTitle("code_AttributeType");'><OPTION value=0>標題</OPTION><OPTION value=1>摘要</OPTION><OPTION selected value=2>其他</OPTION></SELECT>&nbsp;&nbsp;&nbsp;<A href='javascript:toggle("code");'><IMG id=code_tog border=0 align=absMiddle src="images/expand_icon.gif"></A>&nbsp;<A href='javascript:del("code");'><IMG border=0 align=absMiddle src="images/cross.png"></A>
+					<DIV style="PADDING-BOTTOM: 8px; MARGIN-TOP: 8px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; DISPLAY: none; BACKGROUND: #fff; PADDING-TOP: 8px" id=code_sub>
+					<P class=innerbox><B>描述</B></P>
+					<P class=innerbox><TEXTAREA id=code_Description class=textfield>請依公司規定輸入本客戶之代號</TEXTAREA></P>
+					<P class=innerbox><B>欄位介面</B></P>
+					<P class=innerbox><SELECT id=code_UIFieldType onchange="toggleUIFieldItemPanel('code', this.options[this.selectedIndex].value);"><OPTION value=TEXTAREA>多行文字方塊</OPTION><OPTION selected value=TEXTBOX>單行文字方塊</OPTION><OPTION value=RADIO>單選按鈕</OPTION><OPTION value=DROPDOWN>下拉式選單</OPTION><OPTION value=CALENDAR>日期格式文字方塊</OPTION><OPTION value=RICHTEXT>豐富文字編輯器</OPTION><OPTION value=CHECKLIST>多勾選</OPTION><OPTION value=DATETIME>日期與時間文字方塊</OPTION></SELECT>&nbsp;<INPUT id=code_ValidateEmpty type=checkbox>必填欄位&nbsp;<INPUT id=code_AllowEdit CHECKED type=checkbox>允許編輯
+					<DIV style="DISPLAY: block" id=code_RegExpPanel><INPUT id=code_LimitTo type=checkbox>限制格式為<SELECT id=code_RegExpTemplateKey readonly="true"><OPTION selected value=001^[+-]?(?:\d+\.?\d*|\d*\.?\d+)*$>1234...</OPTION><OPTION value=002^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$>Email</OPTION><OPTION value=003^(http[s]?://|ftp://)?(www\.)?[a-zA-Z0-9-\.]+\.(com|org|net|edu|ca|co.uk|com.au|gov|tw|cc|info|jp|biz|tv|me|us|nl|it|es|at|be|eu|bz|ws|nu|co.jp)$>URL</OPTION></SELECT></DIV>
+					<P></P>
+					<DIV style="DISPLAY: none" id=code_UIFieldItemPanel>
+					<TABLE cellSpacing=2 cellPadding=0>
+					<TBODY>
+					<TR>
+					<TD colSpan=2><INPUT id=code_add_textbox class="addItemDataTextbox midtextfield">&nbsp;<BUTTON id=code_add_button class=btn01_mouseout title=將輸入的值加到清單中 onclick="addToList('code_add_textbox', 'code_UIFieldItem');">加入</BUTTON></TD></TR>
+					<TR>
+					<TD rowSpan=2><SELECT id=code_UIFieldItem class=textfield size=5></SELECT></TD>
+					<TD>&nbsp;<BUTTON style="WIDTH: 20px" id=code_up_button class=btn01_mouseout onclick=";">↑</BUTTON>&nbsp;<BUTTON style="WIDTH: 20px" id=code_down_button class=btn01_mouseout onclick=";">↓</BUTTON>&nbsp;<BUTTON id=code_remove_button class=btn01_mouseout title=移除清單中所選取的項目 onclick=";">移除</BUTTON></TD></TR>
+					<TR>
+					<TD>&nbsp;<BUTTON id=code_set_default_button class=btn01_mouseout title=將清單中的選取項目設成預設值 onclick="setSelectedItemAsDefaultValue('code', 'code_UIFieldItem', 'code_DefaultValue')">預設值</BUTTON></TD></TR></TBODY></TABLE></DIV>
+					<P class=innerbox><B>預設值</B></P>
+					<P class=innerbox><INPUT id=code_DefaultValue class=textfield></P></DIV></DIV>
+					<DIV id=client class=listitem><IMG style="CURSOR: move" border=0 align=absMiddle src="images/movecursor.png">&nbsp;顯示名稱<INPUT id=client_DisplayName class=shortextfield value=客戶參加人員>&nbsp;欄位名稱<INPUT id=client_Name class=shortextfield value=client>&nbsp;屬性<SELECT id=client_AttributeType onchange='checkValidEmptyForTitle("client_AttributeType");'><OPTION value=0>標題</OPTION><OPTION value=1>摘要</OPTION><OPTION selected value=2>其他</OPTION></SELECT>&nbsp;&nbsp;&nbsp;<A href='javascript:toggle("client");'><IMG id=client_tog border=0 align=absMiddle src="images/expand_icon.gif"></A>&nbsp;<A href='javascript:del("client");'><IMG border=0 align=absMiddle src="images/cross.png"></A>
+					<DIV style="PADDING-BOTTOM: 8px; MARGIN-TOP: 8px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; DISPLAY: none; BACKGROUND: #fff; PADDING-TOP: 8px" id=client_sub>
+					<P class=innerbox><B>描述</B></P>
+					<P class=innerbox><TEXTAREA id=client_Description class=textfield>請註明本次拜訪之客戶，單位，職稱及姓名，請輸入清楚，如王小明(資訊處/副處長)</TEXTAREA></P>
+					<P class=innerbox><B>欄位介面</B></P>
+					<P class=innerbox><SELECT id=client_UIFieldType onchange="toggleUIFieldItemPanel('client', this.options[this.selectedIndex].value);"><OPTION selected value=TEXTAREA>多行文字方塊</OPTION><OPTION value=TEXTBOX>單行文字方塊</OPTION><OPTION value=RADIO>單選按鈕</OPTION><OPTION value=DROPDOWN>下拉式選單</OPTION><OPTION value=CALENDAR>日期格式文字方塊</OPTION><OPTION value=RICHTEXT>豐富文字編輯器</OPTION><OPTION value=CHECKLIST>多勾選</OPTION><OPTION value=DATETIME>日期與時間文字方塊</OPTION></SELECT>&nbsp;<INPUT id=client_ValidateEmpty type=checkbox>必填欄位&nbsp;<INPUT id=client_AllowEdit CHECKED type=checkbox>允許編輯
+					<DIV style="DISPLAY: none" id=client_RegExpPanel><INPUT id=client_LimitTo type=checkbox>限制格式為<SELECT id=client_RegExpTemplateKey readonly="true"><OPTION selected value=001^[+-]?(?:\d+\.?\d*|\d*\.?\d+)*$>1234...</OPTION><OPTION value=002^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$>Email</OPTION><OPTION value=003^(http[s]?://|ftp://)?(www\.)?[a-zA-Z0-9-\.]+\.(com|org|net|edu|ca|co.uk|com.au|gov|tw|cc|info|jp|biz|tv|me|us|nl|it|es|at|be|eu|bz|ws|nu|co.jp)$>URL</OPTION></SELECT></DIV>
+					<P></P>
+					<DIV style="DISPLAY: none" id=client_UIFieldItemPanel>
+					<TABLE cellSpacing=2 cellPadding=0>
+					<TBODY>
+					<TR>
+					<TD colSpan=2><INPUT id=client_add_textbox class="addItemDataTextbox midtextfield">&nbsp;<BUTTON id=client_add_button class=btn01_mouseout title=將輸入的值加到清單中 onclick="addToList('client_add_textbox', 'client_UIFieldItem');">加入</BUTTON></TD></TR>
+					<TR>
+					<TD rowSpan=2><SELECT id=client_UIFieldItem class=textfield size=5></SELECT></TD>
+					<TD>&nbsp;<BUTTON style="WIDTH: 20px" id=client_up_button class=btn01_mouseout onclick=";">↑</BUTTON>&nbsp;<BUTTON style="WIDTH: 20px" id=client_down_button class=btn01_mouseout onclick=";">↓</BUTTON>&nbsp;<BUTTON id=client_remove_button class=btn01_mouseout title=移除清單中所選取的項目 onclick=";">移除</BUTTON></TD></TR>
+					<TR>
+					<TD>&nbsp;<BUTTON id=client_set_default_button class=btn01_mouseout title=將清單中的選取項目設成預設值 onclick="setSelectedItemAsDefaultValue('client', 'client_UIFieldItem', 'client_DefaultValue')">預設值</BUTTON></TD></TR></TBODY></TABLE></DIV>
+					<P class=innerbox><B>預設值</B></P>
+					<P class=innerbox><INPUT id=client_DefaultValue class=textfield></P></DIV></DIV>
+					<DIV id=staff class=listitem><IMG style="CURSOR: move" border=0 align=absMiddle src="images/movecursor.png">&nbsp;顯示名稱<INPUT id=staff_DisplayName class=shortextfield value=GSS參加人員>&nbsp;欄位名稱<INPUT id=staff_Name class=shortextfield value=staff>&nbsp;屬性<SELECT id=staff_AttributeType onchange='checkValidEmptyForTitle("staff_AttributeType");'><OPTION value=0>標題</OPTION><OPTION value=1>摘要</OPTION><OPTION selected value=2>其他</OPTION></SELECT>&nbsp;&nbsp;&nbsp;<A href='javascript:toggle("staff");'><IMG id=staff_tog border=0 align=absMiddle src="images/expand_icon.gif"></A>&nbsp;<A href='javascript:del("staff");'><IMG border=0 align=absMiddle src="images/cross.png"></A>
+					<DIV style="PADDING-BOTTOM: 8px; MARGIN-TOP: 8px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; DISPLAY: none; BACKGROUND: #fff; PADDING-TOP: 8px" id=staff_sub>
+					<P class=innerbox><B>描述</B></P>
+					<P class=innerbox><TEXTAREA id=staff_Description class=textfield>請輸入本次參與拜訪之同仁姓名, 為避免誤會, 請輸入完整姓名,如Kevin Wang.</TEXTAREA></P>
+					<P class=innerbox><B>欄位介面</B></P>
+					<P class=innerbox><SELECT id=staff_UIFieldType onchange="toggleUIFieldItemPanel('staff', this.options[this.selectedIndex].value);"><OPTION selected value=TEXTAREA>多行文字方塊</OPTION><OPTION value=TEXTBOX>單行文字方塊</OPTION><OPTION value=RADIO>單選按鈕</OPTION><OPTION value=DROPDOWN>下拉式選單</OPTION><OPTION value=CALENDAR>日期格式文字方塊</OPTION><OPTION value=RICHTEXT>豐富文字編輯器</OPTION><OPTION value=CHECKLIST>多勾選</OPTION><OPTION value=DATETIME>日期與時間文字方塊</OPTION></SELECT>&nbsp;<INPUT id=staff_ValidateEmpty type=checkbox>必填欄位&nbsp;<INPUT id=staff_AllowEdit CHECKED type=checkbox>允許編輯
+					<DIV style="DISPLAY: none" id=staff_RegExpPanel><INPUT id=staff_LimitTo type=checkbox>限制格式為<SELECT id=staff_RegExpTemplateKey readonly="true"><OPTION selected value=001^[+-]?(?:\d+\.?\d*|\d*\.?\d+)*$>1234...</OPTION><OPTION value=002^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$>Email</OPTION><OPTION value=003^(http[s]?://|ftp://)?(www\.)?[a-zA-Z0-9-\.]+\.(com|org|net|edu|ca|co.uk|com.au|gov|tw|cc|info|jp|biz|tv|me|us|nl|it|es|at|be|eu|bz|ws|nu|co.jp)$>URL</OPTION></SELECT></DIV>
+					<P></P>
+					<DIV style="DISPLAY: none" id=staff_UIFieldItemPanel>
+					<TABLE cellSpacing=2 cellPadding=0>
+					<TBODY>
+					<TR>
+					<TD colSpan=2><INPUT id=staff_add_textbox class="addItemDataTextbox midtextfield">&nbsp;<BUTTON id=staff_add_button class=btn01_mouseout title=將輸入的值加到清單中 onclick="addToList('staff_add_textbox', 'staff_UIFieldItem');">加入</BUTTON></TD></TR>
+					<TR>
+					<TD rowSpan=2><SELECT id=staff_UIFieldItem class=textfield size=5></SELECT></TD>
+					<TD>&nbsp;<BUTTON style="WIDTH: 20px" id=staff_up_button class=btn01_mouseout onclick=";">↑</BUTTON>&nbsp;<BUTTON style="WIDTH: 20px" id=staff_down_button class=btn01_mouseout onclick=";">↓</BUTTON>&nbsp;<BUTTON id=staff_remove_button class=btn01_mouseout title=移除清單中所選取的項目 onclick=";">移除</BUTTON></TD></TR>
+					<TR>
+					<TD>&nbsp;<BUTTON id=staff_set_default_button class=btn01_mouseout title=將清單中的選取項目設成預設值 onclick="setSelectedItemAsDefaultValue('staff', 'staff_UIFieldItem', 'staff_DefaultValue')">預設值</BUTTON></TD></TR></TBODY></TABLE></DIV>
+					<P class=innerbox><B>預設值</B></P>
+					<P class=innerbox><INPUT id=staff_DefaultValue class=textfield></P></DIV></DIV>
+					<DIV id=content class=listitem><IMG style="CURSOR: move" border=0 align=absMiddle src="images/movecursor.png">&nbsp;顯示名稱<INPUT id=content_DisplayName class=shortextfield value=訪談內容>&nbsp;欄位名稱<INPUT id=content_Name class=shortextfield value=content>&nbsp;屬性<SELECT id=content_AttributeType onchange='checkValidEmptyForTitle("content_AttributeType");'><OPTION value=0>標題</OPTION><OPTION selected value=1>摘要</OPTION><OPTION value=2>其他</OPTION></SELECT>&nbsp;&nbsp;&nbsp;<A href='javascript:toggle("content");'><IMG id=content_tog border=0 align=absMiddle src="images/expand_icon.gif"></A>&nbsp;<A href='javascript:del("content");'><IMG border=0 align=absMiddle src="images/cross.png"></A>
+					<DIV style="PADDING-BOTTOM: 8px; MARGIN-TOP: 8px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; DISPLAY: none; BACKGROUND: #fff; PADDING-TOP: 8px" id=content_sub>
+					<P class=innerbox><B>描述</B></P>
+					<P class=innerbox><TEXTAREA id=content_Description class=textfield>此欄位為摘要,請輸入訪談內容重點. 包括訪談時提到的產品名稱.非文字性之相關資料, 請以附檔形式上傳.</TEXTAREA></P>
+					<P class=innerbox><B>欄位介面</B></P>
+					<P class=innerbox><SELECT id=content_UIFieldType onchange="toggleUIFieldItemPanel('content', this.options[this.selectedIndex].value);"><OPTION value=TEXTAREA>多行文字方塊</OPTION><OPTION value=TEXTBOX>單行文字方塊</OPTION><OPTION value=RADIO>單選按鈕</OPTION><OPTION value=DROPDOWN>下拉式選單</OPTION><OPTION value=CALENDAR>日期格式文字方塊</OPTION><OPTION selected value=RICHTEXT>豐富文字編輯器</OPTION><OPTION value=CHECKLIST>多勾選</OPTION><OPTION value=DATETIME>日期與時間文字方塊</OPTION></SELECT>&nbsp;<INPUT id=content_ValidateEmpty type=checkbox>必填欄位&nbsp;<INPUT id=content_AllowEdit CHECKED type=checkbox>允許編輯
+					<DIV style="DISPLAY: none" id=content_RegExpPanel><INPUT id=content_LimitTo type=checkbox>限制格式為<SELECT id=content_RegExpTemplateKey readonly="true"><OPTION selected value=001^[+-]?(?:\d+\.?\d*|\d*\.?\d+)*$>1234...</OPTION><OPTION value=002^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$>Email</OPTION><OPTION value=003^(http[s]?://|ftp://)?(www\.)?[a-zA-Z0-9-\.]+\.(com|org|net|edu|ca|co.uk|com.au|gov|tw|cc|info|jp|biz|tv|me|us|nl|it|es|at|be|eu|bz|ws|nu|co.jp)$>URL</OPTION></SELECT></DIV>
+					<P></P>
+					<DIV style="DISPLAY: none" id=content_UIFieldItemPanel>
+					<TABLE cellSpacing=2 cellPadding=0>
+					<TBODY>
+					<TR>
+					<TD colSpan=2><INPUT id=content_add_textbox class="addItemDataTextbox midtextfield">&nbsp;<BUTTON id=content_add_button class=btn01_mouseout title=將輸入的值加到清單中 onclick="addToList('content_add_textbox', 'content_UIFieldItem');">加入</BUTTON></TD></TR>
+					<TR>
+					<TD rowSpan=2><SELECT id=content_UIFieldItem class=textfield size=5></SELECT></TD>
+					<TD>&nbsp;<BUTTON style="WIDTH: 20px" id=content_up_button class=btn01_mouseout onclick=";">↑</BUTTON>&nbsp;<BUTTON style="WIDTH: 20px" id=content_down_button class=btn01_mouseout onclick=";">↓</BUTTON>&nbsp;<BUTTON id=content_remove_button class=btn01_mouseout title=移除清單中所選取的項目 onclick=";">移除</BUTTON></TD></TR>
+					<TR>
+					<TD>&nbsp;<BUTTON id=content_set_default_button class=btn01_mouseout title=將清單中的選取項目設成預設值 onclick="setSelectedItemAsDefaultValue('content', 'content_UIFieldItem', 'content_DefaultValue')">預設值</BUTTON></TD></TR></TBODY></TABLE></DIV>
+					<P class=innerbox><B>預設值</B></P>
+					<P class=innerbox><INPUT id=content_DefaultValue class=textfield value="拜訪主旨 : (目的或預期達成的目標 , 欲請教之問題) ● 商機 :  客述 :(主要陳述紀錄客戶的想法、陳述內容、問題) ●我述 :拜訪過程中我方表達的重點 ●判斷 : ♦SR對雙方溝通事件的判斷 ♦客戶人員扮演角色的判斷(Economic Buyer/User Buyer/Technical Buyer/Coach) ♦ 競爭友商 (名稱，在客戶處現有基礎 ，SWOT 分析)  ♦客戶情緒描述 ♦客戶未來動作預測"></P></DIV></DIV>
+					<DIV id=follow class=listitem><IMG style="CURSOR: move" border=0 align=absMiddle src="images/movecursor.png">&nbsp;顯示名稱<INPUT id=follow_DisplayName class=shortextfield value="follow up action">&nbsp;欄位名稱<INPUT id=follow_Name class=shortextfield value=follow>&nbsp;屬性<SELECT id=follow_AttributeType onchange='checkValidEmptyForTitle("follow_AttributeType");'><OPTION value=0>標題</OPTION><OPTION value=1>摘要</OPTION><OPTION selected value=2>其他</OPTION></SELECT>&nbsp;&nbsp;&nbsp;<A href='javascript:toggle("follow");'><IMG id=follow_tog border=0 align=absMiddle src="images/expand_icon.gif"></A>&nbsp;<A href='javascript:del("follow");'><IMG border=0 align=absMiddle src="images/cross.png"></A>
+					<DIV style="PADDING-BOTTOM: 8px; MARGIN-TOP: 8px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; DISPLAY: none; BACKGROUND: #fff; PADDING-TOP: 8px" id=follow_sub>
+					<P class=innerbox><B>描述</B></P>
+					<P class=innerbox><TEXTAREA id=follow_Description class=textfield>請於此輸入後續待辦事項, 及該事項負責人員, 如:安排會議(Kevin Wang), 郵寄活動邀請(Nono Chan).</TEXTAREA></P>
+					<P class=innerbox><B>欄位介面</B></P>
+					<P class=innerbox><SELECT id=follow_UIFieldType onchange="toggleUIFieldItemPanel('follow', this.options[this.selectedIndex].value);"><OPTION selected value=TEXTAREA>多行文字方塊</OPTION><OPTION value=TEXTBOX>單行文字方塊</OPTION><OPTION value=RADIO>單選按鈕</OPTION><OPTION value=DROPDOWN>下拉式選單</OPTION><OPTION value=CALENDAR>日期格式文字方塊</OPTION><OPTION value=RICHTEXT>豐富文字編輯器</OPTION><OPTION value=CHECKLIST>多勾選</OPTION><OPTION value=DATETIME>日期與時間文字方塊</OPTION></SELECT>&nbsp;<INPUT id=follow_ValidateEmpty type=checkbox>必填欄位&nbsp;<INPUT id=follow_AllowEdit CHECKED type=checkbox>允許編輯
+					<DIV style="DISPLAY: none" id=follow_RegExpPanel><INPUT id=follow_LimitTo type=checkbox>限制格式為<SELECT id=follow_RegExpTemplateKey readonly="true"><OPTION selected value=001^[+-]?(?:\d+\.?\d*|\d*\.?\d+)*$>1234...</OPTION><OPTION value=002^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$>Email</OPTION><OPTION value=003^(http[s]?://|ftp://)?(www\.)?[a-zA-Z0-9-\.]+\.(com|org|net|edu|ca|co.uk|com.au|gov|tw|cc|info|jp|biz|tv|me|us|nl|it|es|at|be|eu|bz|ws|nu|co.jp)$>URL</OPTION></SELECT></DIV>
+					<P></P>
+					<DIV style="DISPLAY: none" id=follow_UIFieldItemPanel>
+					<TABLE cellSpacing=2 cellPadding=0>
+					<TBODY>
+					<TR>
+					<TD colSpan=2><INPUT id=follow_add_textbox class="addItemDataTextbox midtextfield">&nbsp;<BUTTON id=follow_add_button class=btn01_mouseout title=將輸入的值加到清單中 onclick="addToList('follow_add_textbox', 'follow_UIFieldItem');">加入</BUTTON></TD></TR>
+					<TR>
+					<TD rowSpan=2><SELECT id=follow_UIFieldItem class=textfield size=5></SELECT></TD>
+					<TD>&nbsp;<BUTTON style="WIDTH: 20px" id=follow_up_button class=btn01_mouseout onclick=";">↑</BUTTON>&nbsp;<BUTTON style="WIDTH: 20px" id=follow_down_button class=btn01_mouseout onclick=";">↓</BUTTON>&nbsp;<BUTTON id=follow_remove_button class=btn01_mouseout title=移除清單中所選取的項目 onclick=";">移除</BUTTON></TD></TR>
+					<TR>
+					<TD>&nbsp;<BUTTON id=follow_set_default_button class=btn01_mouseout title=將清單中的選取項目設成預設值 onclick="setSelectedItemAsDefaultValue('follow', 'follow_UIFieldItem', 'follow_DefaultValue')">預設值</BUTTON></TD></TR></TBODY></TABLE></DIV>
+					<P class=innerbox><B>預設值</B></P>
+					<P class=innerbox><INPUT id=follow_DefaultValue class=textfield></P></DIV></DIV></DIV></DIV>
+					<DIV align=right><INPUT id=save2 class=btn01_mouseout value=存檔 type=button jQuery1280993101485="41"> <INPUT id=cancel2 class=btn01_mouseout value=取消 type=button jQuery1280993101485="45"></DIV></DIV>
+				</DIV>
+			</DIV>
+			
+			
+			<DIV class=divitem id="contents2" style="display:none;">
+				<DIV class="divcaption clearfix">
+					<IMG style="VERTICAL-ALIGN: middle" src="images/gif_doc.gif"> 目前位置<img src="images/breadcrumb_arrow.png" style="margin-top:4px;">管理 / 帳號設定與對應 / 基本資料維護
+				</DIV>
+				<DIV class=divcontent>
+					<DIV class=panel>
+					<DIV class=enavbar2>基本資料維護</DIV><BR>
+					<DIV id=container-1>
+					<UL class=ui-tabs-nav jQuery1280980064970="32">
+					<LI class=ui-tabs-selected><A href="#fragment-1" jQuery1280980064970="41"><SPAN>使用者 </SPAN></A></LI>
+					<!--<LI><A href="#fragment-2" jQuery1280980064970="43"><SPAN>角色 </SPAN></A></LI>-->
+					</UL>
+					<DIV style="DISPLAY: block" id=fragment-1 class=ui-tabs-panel>
+						<BUTTON id=newMember class=btn01_mouseout onclick="$('#newitemU').show();return false">
+							<IMG border=0 align=absMiddle src="images/add.png">&nbsp;新增成員
+						</BUTTON>
+					<BR>&nbsp;<BR>
+					<DIV id=newitemU class=newitem>
+						<TABLE>
+						<TBODY>
+						<TR>
+						<TH>登入帳號 </TH>
+						<TH>顯示名稱 </TH>
+						<TD></TD></TR>
+						<TR>
+						<TD><INPUT type="text" id=newloginid> </TD>
+						<TD><INPUT type="text" id=newdisplayname> </TD>
+						<TD>
+							<INPUT id=submitnew value=確定 type=button onclick="addMember();">
+							<INPUT id=cancelnew value=取消 type=button onclick="$('#newitemU').hide();$('#newloginid').val('');$('#newdisplayname').val('');">
+						</TD></TR></TBODY></TABLE>
+					</DIV>
+					<DIV id=displayAllMember>
+					<TABLE class=grid id="mlist">
+					<TBODY>
+					<TR>
+					<TH></TH>
+					<TH>登入帳號</TH>
+					<TH>顯示名稱</TH>
+					<TH width="40%">角色</TH></TR>
+					<TR>
+					<TD><BUTTON id=Disabled_admin class="classDisabled btn01_mouseout" onclick=';'>
+							<IMG style="CURSOR: pointer" border=0 align=absMiddle src="images/tick.png">&nbsp;已啟用
+						</BUTTON>&nbsp;
+						<BUTTON class=btn01_mouseout onclick=';'>
+							<IMG style="CURSOR: pointer" border=0 align=absMiddle src="images/edit.gif">&nbsp;編輯
+						</BUTTON>
+					</TD>
+					<TD>admin</TD>
+					<TD>admin</TD>
+					<TD id=userRoles_admin class=classUserRoles></TD></TR>
+					<TR>
+					<TD><BUTTON class="classDisabled btn01_mouseout" onclick=';'>
+							<IMG style="CURSOR: pointer" border=0 align=absMiddle src="images/tick.png">&nbsp;已啟用
+						</BUTTON>&nbsp;
+						<BUTTON class=btn01_mouseout onclick=';'>
+							<IMG style="CURSOR: pointer" border=0 align=absMiddle src="images/edit.gif">&nbsp;編輯
+						</BUTTON>
+					</TD>
+					<TD>alex</TD>
+					<TD>alex</TD>
+					<TD id=userRoles_46e98ab8-f683-4109-98c6-b07652b267c4 class=classUserRoles></TD></TR>
+					<TR>
+					<TD><BUTTON class="classDisabled btn01_mouseout" onclick=';'>
+							<IMG style="CURSOR: pointer" border=0 align=absMiddle src="images/tick.png">&nbsp;已啟用
+						</BUTTON>&nbsp;
+						<BUTTON class=btn01_mouseout onclick=';'>
+							<IMG style="CURSOR: pointer" border=0 align=absMiddle src="images/edit.gif">&nbsp;編輯
+						</BUTTON>
+					</TD>
+					<TD>beni</TD>
+					<TD>beni</TD>
+					<TD id=userRoles_e0238745-6138-46ed-81b4-56e191916a37 class=classUserRoles></TD></TR>
+					<TR>
+					<TD><BUTTON class="classDisabled btn01_mouseout" onclick=';'>
+							<IMG style="CURSOR: pointer" border=0 align=absMiddle src="images/tick.png">&nbsp;已啟用
+						</BUTTON>&nbsp;
+						<BUTTON class=btn01_mouseout onclick=';'>
+							<IMG style="CURSOR: pointer" border=0 align=absMiddle src="images/edit.gif">&nbsp;編輯
+						</BUTTON>
+					</TD>
+					<TD>everyone</TD>
+					<TD>everyone</TD>
+					<TD id=userRoles_everyone class=classUserRoles></TD></TR>
+					<TR>
+					<TD><BUTTON class="classDisabled btn01_mouseout" onclick=';'>
+							<IMG style="CURSOR: pointer" border=0 align=absMiddle src="images/tick.png">&nbsp;已啟用
+						</BUTTON>&nbsp;
+						<BUTTON class=btn01_mouseout onclick=';'>
+							<IMG style="CURSOR: pointer" border=0 align=absMiddle src="images/edit.gif">&nbsp;編輯
+						</BUTTON>
+					</TD>
+					<TD>guest</TD>
+					<TD>guest</TD>
+					<TD id=userRoles_guest class=classUserRoles></TD></TR></TBODY></TABLE></DIV>
+					</DIV>
+					
+					</DIV>
+					</DIV>
+				</DIV>
+			</DIV>
+			
+						<div class="divitem" id="contents4" style="display:none">
+				<DIV class="divcaption clearfix"><IMG style="VERTICAL-ALIGN: middle" src="images/gif_doc.gif"> 目前位置<img src="images/breadcrumb_arrow.png" style="margin-top:4px;">報表 / <span id="sitemap">登入摘要</span> </DIV>
+				<DIV class=divcontent>
+				<DIV id=tool class=panel>
+				<TABLE class=report-query-tool>
+				<TBODY>
+				<TR>
+				<TH>日期區間</TH>
+					<TD colSpan=2>
+						<INPUT id=startDate class="calendarField hasDatepick" value=2010/08/02 name=startDate >
+						<IMG style="MARGIN: 2px; VERTICAL-ALIGN: middle" class=datepick-trigger src="images/calendar.gif" onclick="cal[1].select(startDate,'cal1','yyyy/MM/dd'); return false;" id="cal1"> ～
+						<INPUT id=endDate class="calendarField hasDatepick" value=2010/08/05 name=endDate>
+						<IMG style="MARGIN: 2px; VERTICAL-ALIGN: middle" class=datepick-trigger src="images/calendar.gif" onclick="cal[2].select(endDate,'cal2','yyyy/MM/dd'); return false;" id="cal2">
+					</TD>
+				</TR>
+				<TR>
+				<TH>使用者</TH>
+				<TD>
+					<SELECT id=subjects class=folderlist size=5>
+						<OPTION value=uuu1>Jm Chen (陳俊民)</OPTION>
+						<OPTION value=uuu2>Seraph Wang (王勝弘)</OPTION>
+						<OPTION value=uuu3>Beni Lo (羅价任)</OPTION>
+						<OPTION value=uuu4>Alex Huang (黃家揚)</OPTION>
+						<OPTION value=uuu5>Robin Wang (王瑞斌)</OPTION>
+					</SELECT>
+				</TD>
+				<TD> </TD></TR>
+				<TR>
+				<TH>&nbsp;</TH>
+				<TD><BUTTON id=btnQuery class=btn01_mouseout name=btnQuery onclick=";">查詢</BUTTON></TD>
+				<TD>&nbsp;</TD></TR></TBODY></TABLE></DIV>
+				<DIV style="DISPLAY: none" id=report-tool jQuery1280996090042="37"><BUTTON id=btnResetQuery class=btn01_mouseout name=btnResetQuery jQuery1280996090042="41">重新查詢</BUTTON><BUTTON id=export class=btn01_mouseout onclick="javascript:window.location='ajaxreportservice.aspx?cmd=export&amp;reportname=%e7%99%bb%e5%85%a5%e6%91%98%e8%a6%81';">匯出報表</BUTTON> </DIV></DIV>
+			</div>
+			
+			<div class="divitem" id="result" style="display:none">
+				<DIV class="divcaption clearfix">報表結果</DIV>
+				
+				<DIV class="divcontent results" id="1">
+				<TABLE id=report class=tablesorter jQuery1280999728080="72">
+				<THEAD sizcache="0" sizset="0">
+				<TR sizcache="0" sizset="0">
+				<TH class="{sorter: 'text'} header" count="0" column="0" order="0" jQuery1280999728080="64">使用者</TH>
+				<TH class="{sorter: 'text'} header" count="0" column="2" order="0" jQuery1280999728080="68">標題</TH>
+				<TH class="{sorter: 'shotDate'} header" count="0" column="3" order="0" jQuery1280999728080="70">最後閱讀時間</TH></TR></THEAD>
+				<TBODY>
+				<TR>
+				<TD>admin</TD>
+				<TD><A href="http://demo.vitalskm.com/callreport/readdocument.aspx?documentId=2392065">test</A></TD>
+				<TD>2010/08/03 11:08:14</TD></TR></TBODY></TABLE>
+				</DIV>
+				
+				<DIV class="divcontent results" id="2">
+					無任何記錄
+				</DIV>
+				
+				<DIV class="divcontent results" id="3">
+					<TABLE id=report class=tablesorter jQuery1281000140741="68">
+					<THEAD sizcache="0" sizset="0">
+					<TR sizcache="0" sizset="0">
+					<TH class="{sorter: 'text'} header" count="0" column="0" order="0" jQuery1281000140741="60">使用者</TH>
+					<TH class="{sorter: 'shortDate'} header" count="0" column="1" order="0" jQuery1281000140741="62">最近登入時間</TH>
+					<TH class="{sorter: 'ipAddress'} header" count="0" column="2" order="0" jQuery1281000140741="64">來自</TH>
+					<TH class="{sorter: 'digit'} header" count="0" column="3" order="0" jQuery1281000140741="66">登入次數</TH></TR></THEAD>
+					<TBODY>
+					<TR>
+					<TD>admin</TD>
+					<TD>2010/08/05 17:14:47</TD>
+					<TD>172.16.5.208</TD>
+					<TD>11</TD></TR></TBODY></TABLE>
+				</DIV>
+				
+				<DIV class="divcontent results" id="4">
+					<TABLE id=report class=tablesorter jQuery1281000260040="68">
+					<THEAD sizcache="0" sizset="0">
+					<TR sizcache="0" sizset="0">
+					<TH class="{sorter: 'text'} header" count="0" column="0" order="0" jQuery1281000260040="60">使用者</TH>
+					<TH class="{sorter: 'shortDate'} header" count="0" column="1" order="0" jQuery1281000260040="62">時間</TH>
+					<TH class="{sorter: 'ipAddress'} header" count="0" column="2" order="0" jQuery1281000260040="64">來自</TH>
+					<TH class="{sorter: 'text'} header" count="0" column="3" order="0" jQuery1281000260040="66">登入驗證</TH></TR></THEAD>
+					<TBODY>
+					<TR>
+					<TD>admin</TD>
+					<TD>2010/08/05 13:08:51</TD>
+					<TD>172.16.5.208</TD>
+					<TD><SPAN class=logonSuccessful>成功</SPAN></TD></TR>
+					<TR>
+					<TD>admin</TD>
+					<TD>2010/08/05 10:00:44</TD>
+					<TD>172.16.5.208</TD>
+					<TD><SPAN class=logonSuccessful>成功</SPAN></TD></TR>
+					<TR>
+					<TD>admin</TD>
+					<TD>2010/08/05 10:00:01</TD>
+					<TD>172.16.5.208</TD>
+					<TD><SPAN class=logonSuccessful>成功</SPAN></TD></TR></TBODY>
+					</TABLE>
+				</DIV>
+			</div>
+		</TD>
+		</TR>
+		</TBODY>
+		</TABLE>
+	</DIV>
+	</FORM>
+</DIV>
+<BR>
+<DIV style="CLEAR: both" id=siteInfo class=footer>
+<DIV style="FLOAT: left">
+<DIV class=footer_header_logo title=3.0.9.510></DIV></DIV>
+<DIV style="FLOAT: left; PADDING-TOP: 18px">
+<P>所有時間為:(UTC+08:00) 台北@台北標準時間/Taipei Standard Time</P>
+<DIV>Copyright © Galaxy Software Services Corporation. All rights reserved.</DIV>
+<DIV>Powered by Vitals/KM</DIV></DIV></DIV>
+<DIV style="POSITION: absolute; WIDTH: 300px; DISPLAY: none" class=ac_results></DIV>
+<DIV style="POSITION: absolute; TEXT-ALIGN: center; PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; DISPLAY: none; BACKGROUND: red; COLOR: #ffffff; TOP: 0px; PADDING-TOP: 3px; LEFT: 0px" id=messagebar jQuery1279780202056="125">
+	載入中...</DIV>
+<DIV style="POSITION: absolute; TOP: -1000px; LEFT: -1000px"><SPAN class=[object]tn>
+	&nbsp;</SPAN><SPAN class=[object]tm>&nbsp;</SPAN><SPAN class=[object]tmh>&nbsp;</SPAN><SPAN class=[object]tp>&nbsp;</SPAN><SPAN class=[object]tph>&nbsp;</SPAN><SPAN class=[object]ln>&nbsp;</SPAN><SPAN class=[object]lm>&nbsp;</SPAN><SPAN class=[object]lmh>&nbsp;</SPAN><SPAN class=[object]lp>&nbsp;</SPAN><SPAN class=[object]lph>&nbsp;</SPAN><SPAN class=[object]loading>&nbsp;</SPAN></DIV></BODY></HTML>
+
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+var cal = new Array(18);
+var length = cal.length;
+for (i=1;i<=length;i++)
+{
+	cal[i] = new CalendarPopup("testdiv1");
+	cal[i].setCssPrefix("TEST");
+}
+</SCRIPT>
+<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
