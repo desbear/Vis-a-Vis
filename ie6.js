@@ -1,0 +1,1 @@
+DD_belatedPNG.fix(' #header, #header_logo, #nav li a, #content, .divitem, .divcaption, .divcontent, .list, .mod-collapse, .mod-collapse-closed, .mod-refresh, .mod-delete, .mod-menu, .listitem, .captiondec, .opentype, .closetype, .ui-tabs-nav, .ui-tabs-nav a, .ui-tabs-nav a span, #logomask');
